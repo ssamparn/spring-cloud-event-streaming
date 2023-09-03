@@ -2,7 +2,7 @@
 spring:
   cloud:
     function:
-      definition: stringFunction
+      definition: stringConsumer
     stream:
       bindings:
         stringConsumer-in-0:
@@ -35,7 +35,7 @@ spring:
 #            "group.instance.id": "f8c3de3d" # This is one way of setting consumer properties
 
 
-### Kafka bindings specific configuration:
+### Kafka bindings consumer specific configuration:
 #---
 #spring:
 #  cloud:

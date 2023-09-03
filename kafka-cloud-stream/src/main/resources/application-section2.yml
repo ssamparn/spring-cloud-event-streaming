@@ -1,0 +1,34 @@
+---
+spring:
+  cloud:
+    function:
+      definition: stringProducer;stringConsumer
+    stream:
+      bindings:
+        stringConsumer-in-0:
+          destination: input-topic
+          group: string-group
+        stringProducer-out-0:
+          destination: input-topic
+
+
+### Kafka bindings producer specific configuration:
+
+#---
+#spring:
+#  cloud:
+#    function:
+#      definition: stringProducer;stringConsumer
+#    stream:
+#      bindings:
+#        stringConsumer-in-0:
+#          destination: input-topic
+#          group: string-group
+#        stringProducer-out-0:
+#          destination: input-topic
+#      kafka:
+#        bindings:
+#          stringProducer-out-0:
+#            producer:
+#              configuration:
+#                "acks": "-1"
