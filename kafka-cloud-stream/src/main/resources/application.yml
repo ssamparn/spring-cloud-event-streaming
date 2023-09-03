@@ -1,7 +1,6 @@
+---
+section: section1
+
 spring:
-  cloud:
-    stream:
-      bindings:
-        stringConsumer-in-0:
-          destination: input-topic
-          group: string-consumer-group
+  profiles:
+    active: ${section}
