@@ -11,3 +11,51 @@ spring:
         stringFunction-in-0:
           destination: input-topic
           group: string-group
+
+
+### Kafka binder specific configuration
+#---
+#spring:
+#  cloud:
+#    function:
+#      definition: stringFunction
+#    stream:
+#      bindings:
+#        stringConsumer-in-0:
+#          destination: input-topic
+#          group: string-group
+#        stringFunction-in-0:
+#          destination: input-topic
+#          group: string-group
+#      kafka:
+#        binder:
+          # configuration:
+          # producer-properties:
+#          consumer-properties:
+#            "group.instance.id": "f8c3de3d" # This is one way of setting consumer properties
+
+
+### Kafka bindings specific configuration:
+#---
+#spring:
+#  cloud:
+#    function:
+#      definition: stringConsumer
+#    stream:
+#      bindings:
+#        stringConsumer-in-0:
+#          destination: input-topic
+#          group: string-group
+#        stringFunction-in-0:
+#          destination: input-topic
+#          group: string-group
+#      kafka:
+#        bindings:
+#          stringFunction-in-0:
+#            consumer:
+#              configuration:
+#                "group.instance.id": "f8c3de3d"
+#          stringConsumer-in-0:
+#            consumer:
+#              configuration:
+#                "group.instance.id": "g9d4ef4e"
