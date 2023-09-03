@@ -47,6 +47,7 @@ $ docker exec -it reactive-kafka bash
 ```bash
 $ kafka-topics.sh --bootstrap-server localhost:9092 --topic <topic-name> --create
 $ kafka-topics.sh --bootstrap-server localhost:9092 --topic input-topic --create
+$ kafka-topics.sh --bootstrap-server localhost:9092 --topic output-topic --create
 ```
 
 #### List all topics

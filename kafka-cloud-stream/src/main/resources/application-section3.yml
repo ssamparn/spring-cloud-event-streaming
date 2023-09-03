@@ -1,0 +1,18 @@
+---
+spring:
+  cloud:
+    function:
+      definition: stringProducer;stringProcessor;stringConsumer
+    stream:
+      bindings:
+        stringProducer-out-0:
+          destination: input-topic
+        stringProcessor-in-0:
+          destination: input-topic
+          group: processor-group
+        stringProcessor-out-0:
+          destination: output-topic
+          group: processor-group
+        stringConsumer-in-0:
+          destination: output-topic
+          group: consumer-group
