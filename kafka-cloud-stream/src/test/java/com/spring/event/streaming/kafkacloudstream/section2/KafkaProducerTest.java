@@ -3,10 +3,7 @@ package com.spring.event.streaming.kafkacloudstream.section2;
 import com.spring.event.streaming.kafkacloudstream.AbstractIntegrationTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.system.CapturedOutput;
-import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.TestPropertySource;
 import reactor.core.publisher.Flux;
@@ -21,7 +18,6 @@ import java.util.function.Consumer;
         "spring.cloud.function.definition=stringProducer;testConsumer",
         "spring.cloud.stream.bindings.testConsumer-in-0.destination=input-topic"
 })
-@ExtendWith(OutputCaptureExtension.class)
 public class KafkaProducerTest extends AbstractIntegrationTest {
 
     private static final Sinks.Many<String> sink = Sinks.many().unicast().onBackpressureBuffer();
@@ -37,7 +33,7 @@ public class KafkaProducerTest extends AbstractIntegrationTest {
     }
 
     @Test
-    public void producerTest(CapturedOutput capturedOutput) {
+    public void producerTest() {
         sink
             .asFlux()
             .take(5)
