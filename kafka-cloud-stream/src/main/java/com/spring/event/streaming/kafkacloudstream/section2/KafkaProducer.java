@@ -1,4 +1,4 @@
-package com.spring.event.streaming.kafkacloudstream.section2.producer;
+package com.spring.event.streaming.kafkacloudstream.section2;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerConfig;

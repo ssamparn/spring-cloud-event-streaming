@@ -1,0 +1,31 @@
+---
+spring:
+  cloud:
+    function:
+      definition: orderEventProducer;orderProcessor;digitalDeliveryReceiver;physicalDeliveryReceiver
+    stream:
+      bindings:
+        orderEventProducer-out-0:
+          destination: order-events-topic
+        orderProcessor-in-0:
+          destination: order-events-topic
+          group: processor-group
+#        Stream bridge will create below 2 bindings at runtime.
+        digital-delivery-out:
+          destination: digital-delivery-topic
+        physical-delivery-out:
+          destination: physical-delivery-topic
+        digitalDeliveryReceiver-in-0:
+          destination: digital-delivery-topic
+          group: digital-delivery-group
+        physicalDeliveryReceiver-in-0:
+          destination: physical-delivery-topic
+          group: physical-delivery-group
+      kafka:
+        binder:
+          producer-properties:
+            "key.serializer": org.apache.kafka.common.serialization.StringSerializer
+          consumer-properties:
+            "key.deserializer": org.apache.kafka.common.serialization.StringDeserializer
+            "auto.offset.reset": "earliest"
+            "group.instance.id": "1"
