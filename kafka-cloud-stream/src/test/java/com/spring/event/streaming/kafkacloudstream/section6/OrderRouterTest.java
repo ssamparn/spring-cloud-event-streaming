@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @TestPropertySource(properties = {
-        "section=section7",
+        "section=section6",
         "spring.cloud.function.definition=testOrderEventProducer;orderProcessor;testDigitalDeliveryConsumer;testPhysicalDeliveryConsumer",
         "spring.cloud.stream.bindings.testOrderEventProducer-out-0.destination=order-events-topic",
         "spring.cloud.stream.bindings.testDigitalDeliveryConsumer-in-0.destination=digital-delivery-topic",
@@ -33,7 +33,6 @@ public class OrderRouterTest extends AbstractIntegrationTest {
     private static final Sinks.Many<DigitalDelivery> digitalDeliverySink = Sinks.many().unicast().onBackpressureBuffer();
     private static final Sinks.Many<PhysicalDelivery> physicalDeliverySink = Sinks.many().unicast().onBackpressureBuffer();
 
-    // tests the order router in section 7: message header based routing.
     @Test
     public void orderRouterTest() {
 

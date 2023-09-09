@@ -1,4 +1,4 @@
-package com.spring.event.streaming.kafkacloudstream.section5;
+package com.spring.event.streaming.kafkacloudstream.section7;
 
 import com.spring.event.streaming.kafkacloudstream.AbstractIntegrationTest;
 import com.spring.event.streaming.kafkacloudstream.section6.dto.DigitalDelivery;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @TestPropertySource(properties = {
-        "section=section6",
+        "section=section7",
         "spring.cloud.function.definition=testOrderEventProducer;orderProcessor;testDigitalDeliveryConsumer;testPhysicalDeliveryConsumer",
         "spring.cloud.stream.bindings.testOrderEventProducer-out-0.destination=order-events-topic",
         "spring.cloud.stream.bindings.testDigitalDeliveryConsumer-in-0.destination=digital-delivery-topic",
@@ -33,7 +33,6 @@ public class OrderRouterTest extends AbstractIntegrationTest {
     private static final Sinks.Many<DigitalDelivery> digitalDeliverySink = Sinks.many().unicast().onBackpressureBuffer();
     private static final Sinks.Many<PhysicalDelivery> physicalDeliverySink = Sinks.many().unicast().onBackpressureBuffer();
 
-    // tests the order router in section 6: dynamic routing.
     @Test
     public void orderRouterTest() {
 
@@ -81,5 +80,4 @@ public class OrderRouterTest extends AbstractIntegrationTest {
                     .subscribe();
         }
     }
-
 }
